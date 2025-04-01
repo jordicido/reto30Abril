@@ -51,3 +51,21 @@ n! = n *(n-1)* (n-2) *...* 3 *2* 1
 2! = 2
 ...
 ```
+
+## Reto 4 abril
+
+### Enunciado
+
+Haz un programa que pida al usuario un número entero y muestre por pantalla la tabla de multiplicar de ese número.
+El programa debe mostrar la tabla de multiplicar del número introducido, desde el 1 hasta el 10.
+
+**Ejemplo**
+
+- Si el usuario introduce 5, el programa debe mostrar:
+
+```
+5 x 1 = 5
+5 x 2 = 10
+...
+5 x 10 = 50
+```
