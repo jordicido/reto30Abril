@@ -34,3 +34,20 @@ El programa debe mostrar la tabla de multiplicar del número introducido, desde 
 ...
 5 x 10 = 50
 ```
+
+## Reto 3 abril
+
+### Enunciado
+
+Haz una función que reciba un número entero y devuelva su factorial.
+El factorial de un número entero n es el producto de todos los números enteros desde 1 hasta n. Se representa como n! y se define como:
+
+**Ejemplo**
+
+```
+n! = n *(n-1)* (n-2) *...* 3 *2* 1
+0! = 1
+1! = 1
+2! = 2
+...
+```
