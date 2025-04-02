@@ -28,6 +28,7 @@ if (numero - int(numero) >= 0.5):
 else: 
     print(int(numero))
 ```
+#yo quiero un 10
 
 #### Java
 
