@@ -17,6 +17,10 @@ Los que tengan decimales desde ,5 a superior, se redondean al alza.
 - Si el usuario introduce 4,49, el programa debe devolver un 4
 - Si el usuario introduce 9,5 el programa debe devolver un 10
 
+### Soluciones
+
+#### Python
+
 ```python
 numero = float(input("Introduce un número decimal: "))
 if (numero - int(numero) >= 0.5):
@@ -24,6 +28,8 @@ if (numero - int(numero) >= 0.5):
 else: 
     print(int(numero))
 ```
+
+#### Java
 
 ```java
 import java.util.Scanner;
