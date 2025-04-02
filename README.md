@@ -12,7 +12,7 @@ Desarrolla un algoritmo que, dado un número decimal, devuelve su resultado ente
 Todos los números decimales por debajo de ,5 se redondean a la baja.
 Los que tengan decimales desde ,5 a superior, se redondean al alza.
 
-**Ejemplo**
+### Ejemplo
 
 - Si el usuario introduce 4,49, el programa debe devolver un 4
 - Si el usuario introduce 9,5 el programa debe devolver un 10
