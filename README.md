@@ -121,32 +121,3 @@ public class dia2 {
     }
 }
 ```
-
-## Reto 3 abril - Palíndromo
-
-### Enunciado
-
-Un palíndromo es una palabra, frase o número que se lee igual de izquierda a derecha que de derecha a izquierda. Por ejemplo, "anilina", "reconocer" o "salas".
-Tu misión es crear un programa que verifique si una palabra o frase es un palíndromo. El programa debe ignorar espacios y mayúsculas.
-Crea un programa que:
-
-- Pida al usuario una palabra o frase
-- Verifique si es un palíndromo
-- Imprima un mensaje indicando si es un palíndromo o no
-- PISTA: Puedes usar la función replace() para eliminar espacios y la función lower() para convertir a minúsculas.
-- PISTA: Puedes usar la función reversed() para invertir la cadena y compararla con la original.
-
-### Ejemplo
-
-- Si el usuario introduce "Anita lava la tina", el programa debe devolver "Es un palíndromo"
-- Si el usuario introduce "Hola mundo", el programa debe devolver "No es un palíndromo"
-
-### Soluciones
-
-#### Python
-
-```python
-def es_palindromo(frase):
-    frase = frase.replace(" ", "").lower()
-    return frase == frase[::-1]
-```
