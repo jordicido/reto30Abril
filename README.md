@@ -194,7 +194,7 @@ print(f"Es {weekDays[currentDate.weekday()]}")
 print(f"El mes es {monthsOfYear[currentDate.month]}")
 ```
 
-#### Python
+#### Java
 
 ```java
 import java.time.LocalDate;
