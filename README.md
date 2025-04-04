@@ -121,3 +121,112 @@ public class dia2 {
     }
 }
 ```
+
+## Reto 3 abril - El tiempo
+
+### Enunciado
+
+Crear dos variables utilizando los objetos fecha.
+
+- En la primera se representa la fecha (día, mes, año) actual.
+- En la segunda se representa la fecha de nacimiento.
+
+Calcular cuántos años han transcurrido entre ambas fechas y muestra su resultado de maneras diferentes
+Día, mes y año.
+Hora, minuto y segundo.
+Día de año.
+Día de la semana.
+Nombre del mes.
+
+Pistas: buscar sobre el paquete java.time para para fechas y horas.
+
+### Ejemplo
+
+Entrada
+
+- Fecha actual: 04/04/2025
+- Fecha nacimiento: 04/06/1988
+
+Salida
+
+- Han pasado 36 años, 9 meses y 0 días.
+- 4 de abril de 2025
+- Son las 5:56 AM
+- Han pasado 94 días desde el inicio del año.
+- Es viernes
+- El mes es abril
+
+### Soluciones
+
+#### Python
+
+```python
+from datetime import datetime
+
+weekDays = {0 : "Lunes", 1 : "Martes", 2 : "Miercoles", 3 : "Jueves", 4 : "Viernes", 5 : "Sábado", 6 : "Domingo"}
+monthsOfYear = {1 : "Enero", 2 : "Febrero", 3 : "Marzo", 4 : "Abril", 5 : "Mayo", 6 : "Junio", 7 : "Julio", 8 : "Agosto",
+                9 : "Septiembre", 10 : "Octubre", 11 : "Novembre", 12 : "Desembre"}
+
+birthDate = datetime.strptime(input("Introduce tu fecha de nacimiento (DD/MM/YYYY): "), "%d/%m/%Y")
+currentDate = datetime.now()
+
+years = currentDate.year - birthDate.year
+months = currentDate.month - birthDate.month
+days = currentDate.day - birthDate.day
+daysOfYear = currentDate - datetime.strptime("01/01/2025","%d/%m/%Y")
+
+if months < 0:
+    years -= 1
+    months += 12
+    
+if days < 0:
+    months -= 1
+    previous_month = (currentDate.month - 1) if currentDate.month > 1 else 12
+    previous_year = currentDate.year if currentDate.month > 1 else currentDate.year - 1
+    days_in_previous_month = (datetime(previous_year, previous_month + 1, 1) - datetime(previous_year, previous_month, 1)).days
+    days += days_in_previous_month
+
+print(f"Han pasado {years} años,  {months} meses y {days} días")
+print(f"Hoy es {currentDate.day} de {currentDate.month} del {currentDate.year}")
+print(f"Son las {currentDate.hour}:{currentDate.minute}:{currentDate.second}")
+print(f"Han pasado {daysOfYear.days} días dede el inicio del año")
+print(f"Es {weekDays[currentDate.weekday()]}")
+print(f"El mes es {monthsOfYear[currentDate.month]}")
+```
+
+```java
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.time.Period;
+import java.time.format.DateTimeFormatter;
+import java.time.format.TextStyle;
+import java.util.Locale;
+import java.util.Scanner;
+
+public class dia3 {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("En qué fecha naciste? (DD/MM/AAAA):");
+        LocalDate bornDate = LocalDate.parse(scanner.nextLine(), DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+        LocalDate currenDate = LocalDate.now();
+
+        Period period = Period.between(bornDate, currenDate);
+        System.out.println("Han pasado " + period.getYears() + " años, " + period.getMonths() + " meses y "
+                + period.getDays() + " días.");
+        System.out.println("Hoy es " + currenDate.getDayOfMonth() + " de "
+                + currenDate.getMonth().getDisplayName(TextStyle.FULL, Locale.forLanguageTag("es-ES")) + " de "
+                + currenDate.getYear());
+        System.out.println("Son las " + LocalTime.now().getHour() + ":" + LocalTime.now().getMinute() + ":"
+                + LocalTime.now().getSecond());
+        System.out.println("Han pasado " + currenDate.getDayOfYear() + " días dede el inicio del año");
+        System.out.println(
+                "Es " + currenDate.getDayOfWeek().getDisplayName(TextStyle.FULL, Locale.forLanguageTag("es-ES")));
+        System.out.println(
+                "El mes es " + currenDate.getMonth().getDisplayName(TextStyle.FULL, Locale.forLanguageTag("es-ES")));
+
+        scanner.close();
+    }
+}
+```
