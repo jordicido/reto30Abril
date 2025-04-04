@@ -194,6 +194,8 @@ print(f"Es {weekDays[currentDate.weekday()]}")
 print(f"El mes es {monthsOfYear[currentDate.month]}")
 ```
 
+#### Python
+
 ```java
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -226,6 +228,59 @@ public class dia3 {
         System.out.println(
                 "El mes es " + currenDate.getMonth().getDisplayName(TextStyle.FULL, Locale.forLanguageTag("es-ES")));
 
+        scanner.close();
+    }
+}
+```
+
+## Reto 4 abril - Boom
+
+### Enunciado
+
+Como dice la señora del famoso meme ([link](https://www.youtube.com/watch?v=U7qESuhCqhg&ab_channel=AntonioJuanJim%C3%A9nezGonz%C3%A1lez)), un día estalló la guerra. Haz un programa que, dado un número que se pasa por entrada, haga una cuenta atrás y acabe con un ¡BOOM!.
+
+### Ejemplo
+
+Entrada
+
+5
+
+Salida
+
+5
+4
+3
+2
+1
+¡BOOM!
+
+### Soluciones
+
+#### Python
+
+```python
+counter = int(input("Introduce la cuenta atrás: "))
+
+for i in range(counter, 0, -1):
+    print(i)
+    
+print("¡BOOM!")
+```
+
+#### Java
+
+```java
+import java.util.Scanner;
+
+public class dia4 {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Introduce la cuenta atrás: ");
+        for (int i = scanner.nextInt(); i > 0; i--) {
+            System.out.println(i);
+        }
+        System.out.println("¡BOOM!");
         scanner.close();
     }
 }
