@@ -285,3 +285,79 @@ public class dia4 {
     }
 }
 ```
+
+## Reto 5 abril -  ¡Exclamaciones
+
+### Enunciado
+
+Jordi nunca se acuerda de abrir las exclamaciones. Él dice que es porque en catalán no se abren las exclamaciones, pero yo creo que simplemente no sabe escribir.
+Vamos a crear un programa que asegure que hay tantos abrir exclamación (¡) como cerrar exclamación (!) para flamearlo.
+
+### Ejemplo
+
+Entrada
+
+¡¡¡Caramba!!!
+Hola!
+
+Salida
+
+Si
+No
+
+### Solución
+
+#### Python
+
+```python
+sentence = input("Introduce la frase: ")
+
+counter = 0
+
+for letter in sentence:
+    if letter == "¡":
+        counter += 1
+    elif letter == "!":
+        counter -= 1
+        
+    if counter < 0:
+        break
+
+if counter == 0:
+    print("Si")
+else:
+    print("No")
+```
+
+#### Java
+
+```java
+import java.util.Scanner;
+
+public class dia5 {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Introduce la frase: ");
+        String sentence = scanner.nextLine();
+        int counter = 0;
+
+        for (String letter : sentence.split("")) {
+            if (letter.equals("¡"))
+                counter++;
+            else if (letter.equals("!"))
+                counter--;
+
+            if (counter < 0)
+                break;
+        }
+
+        if (counter == 0)
+            System.out.println("Si");
+        else
+            System.out.println("No");
+
+        scanner.close();
+    }
+}
+```
