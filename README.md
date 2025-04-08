@@ -361,3 +361,75 @@ public class dia5 {
     }
 }
 ```
+
+## Reto 6 abril -  Cajero del Mercadona
+
+### Enunciado
+
+Juan está trabajando en un mercadona en el que no hay cajero automático, él siempre calcula el cambio de los clientes de cabeza. ¿Se te ocurre alguna forma de hacerle la vida más sencilla al pobre chaval?
+
+Crea un programa que:
+Reciba la cantidad de dinero (double) que el usuario ha entregado para pagar.
+
+Compare la cantidad entregada con el precio del producto y calcule la diferencia.
+
+Súmale el IVA porque esto es españa, redondeado a dos décimas (+21%)
+
+Devuelva el valor utilizando la menor cantidad de billetes y monedas posibles siendo estos billete de 500 €, billete de 200 €, billete de 100 €, billete de 50 €, billete de 20 €, billete de 10 €, billete de 5 €, moneda de 2 €, moneda de 1 €, moneda de 50 cnts, moneda de 20 cnts, moneda de 10 cnts, moneda de 2 cnts y moneda de 1 cnt.
+
+Pero cuidado, si un cliente intenta pagar con menos dinero del necesario… ¡tendrás que avisarle antes de que se lleve el producto gratis!
+
+### Solución
+
+#### Python
+
+```python
+money = (500, 200, 100, 50, 20, 10, 2, 1, 0.5, 0.2, 0.1, 0.05, 0.02, 0.01)
+cost = float(input("Define el precio del producto: "))
+pay = float(input("Con cuanto dinero vas a pagar?: "))
+
+cost += cost*0.21
+
+change = pay - cost
+
+for item in money:
+    print(f"{item}: {int(change//item)}")
+    if change//item > 0:
+        change -= item * (change//item)  
+```
+
+#### Java
+
+```java
+import java.util.Scanner;
+
+public class dia6 {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        double[] money = new double[] { 500, 200, 100, 50, 20, 10, 2, 1, 0.5, 0.2, 0.1, 0.05, 0.02, 0.01 };
+
+        System.out.println("Define el precio del producto: ");
+        double cost = scanner.nextDouble();
+        System.out.println("Con cuanto dinero vas a pagar?: ");
+        double pay = scanner.nextDouble();
+
+        cost += cost * 0.21;
+
+        double change = pay - cost;
+
+        for (double item : money) {
+            if (item >= 1.0) {
+                System.out.println((int) item + ": " + (int) Math.floor(change / item));
+            } else
+                System.out.println(item + ": " + (int) Math.floor(change / item));
+
+            if (change / item >= 1) {
+                change -= item * ((int) (change / item));
+            }
+        }
+
+        scanner.close();
+    }
+}
+```
