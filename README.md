@@ -433,3 +433,51 @@ public class dia6 {
     }
 }
 ```
+
+## Reto 7 abril -  Carrera de caracoles cibernéticos
+
+### Enunciado
+
+Imagina una emocionante carrera entre caracoles cibernéticos. Cada caracol tiene una velocidad aleatoria entre 1 y 5 (¡qué emoción!).
+
+- Escribe un programa que simule una carrera de 20 "pasos" entre dos caracoles.
+- En cada paso, la posición de cada caracol aumenta según su velocidad.
+- Al final, ¡declara al caracol ganador (o si hay un emocionante empate)!
+
+### Solución
+
+#### Python
+
+```python
+import random
+
+snail1 = random.randint(1,5)
+snail2 = random.randint(1,5)
+
+if snail1 == snail2: 
+    print(f"La carrera ha acabado en empate en la posición {snail1*20}")
+elif snail1 > snail2:
+    print(f"El ganador ha sido el caracol 1 en la posición {snail1*20}")
+else:
+    print(f"El ganador ha sido el caracol 2 en la posición {snail2*20}")
+```
+
+#### Java
+
+```java
+public class dia7 {
+
+    public static void main(String[] args) {
+        int snail1 = 1 + (int) (Math.random() * 5);
+        int snail2 = 1 + (int) (Math.random() * 5);
+
+        if (snail1 == snail2) {
+            System.out.println("La carrera ha acabado en empate en la posición " + snail1 * 20);
+        } else if (snail1 > snail2) {
+            System.out.println("El ganador ha sido el caracol 1 en la posición " + snail1 * 20);
+        } else {
+            System.out.println("El ganador ha sido el caracol 2 en la posición " + snail2 * 20);
+        }
+    }
+}
+```
