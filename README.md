@@ -481,3 +481,58 @@ public class dia7 {
     }
 }
 ```
+
+## Reto 8 abril -  El Robot de Saludos Personalizados
+
+### Enunciado
+
+Escribe un programa que le pregunte al usuario su nombre.
+Si el nombre comienza con la letra "A" (mayúscula o minúscula), el robot responderá con un saludo entusiasta como: ¡Hola, Asombroso/a "Nombre"!.
+Si el nombre tiene más de 7 letras, el robot dirá: ¡Vaya, "Nombre", ¡qué nombre tan largo y sofisticado!.
+Para cualquier otro nombre, el robot simplemente dirá: Saludos, "Nombre".
+
+¡Prepara al robot para todo tipo de nombres! Como un saludo especial a un nombre que empiece por A y tenga 7 letras, o que cuente un chiste si saluda a Jaimito...
+
+### Solución
+
+#### Python
+
+```python
+name = input("Dime tu nombre, humano\n")
+
+if len(name) > 7 and name[0].lower == 'a':
+    print(f"¡Hola, Asombroso/a {name}, qué nombre tan largo y sofisticado!")
+elif  len(name) > 7:
+    print(f"¡Vaya, {name}, ¡qué nombre tan largo y sofisticado!")
+elif name[0].lower == 'a':
+    print(f"¡Hola, Asombroso/a {name}!")
+else:
+    print(f"Saludos, {name}")
+```
+
+#### Java
+
+```java
+import java.util.Scanner;
+
+public class dia8 {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Dime tu nombre, humano");
+        String name = scanner.next();
+
+        if (name.length() > 7 && name.toLowerCase().charAt(0) == 'a') {
+            System.out.println("¡Hola, Asombroso/a " + name + ", qué nombre tan largo y sofisticado!");
+        } else if (name.length() > 7) {
+            System.out.println("¡Vaya, " + name + ", ¡qué nombre tan largo y sofisticado!");
+        } else if (name.toLowerCase().charAt(0) == 'a') {
+            System.out.println("¡Hola, Asombroso/a " + name + "!");
+        } else
+            System.out.println("Saludos, " + name);
+
+        scanner.close();
+    }
+}
+```
