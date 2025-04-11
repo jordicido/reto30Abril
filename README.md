@@ -618,3 +618,104 @@ public class dia9 {
     }
 }
 ```
+
+## Reto 10 abril -  Cookies Súper Ricas S.A
+
+### Enunciado
+
+Una tienda de galletas artesanales vende al por mayor en su página web. Cada caja de galletas cuesta 6€. Solicita la cantidad de cajas de galletas en cada venta y dependiendo de la cantidad introducida se realizan los siguientes pasos:
+
+- Si la cantidad de cajas de galletas vendidas es menor a 5: no se permiten compras inferiores a 5 cajas de galletas.
+- Si la cantidad de cajas de galletas es mayor o igual a 5, pero menor a 15: los gastos de envío son de 10€.
+- Si la cantidad de cajas de galletas es mayor a 15: El envío es gratuito.
+
+Promociones:
+
+- Si el precio total es inferior a 120€ no hay promociones.
+- Si el precio total supera los 120€ pero es menor a 250€: Tiene un descuento del 5%.
+- Si el precio total supera los 250€: Tiene un descuento del 10%.
+
+Muestra al cliente un mensaje por pantalla según la cantidad de cajas de galletas que quiera comprar:
+
+- Número total de cajas a comprar.
+- Total € de la compra.
+- Gastos de envío (si los tiene o si es gratuito)
+- Descuento por compra (Indicar al cliente cuántos € falta para entrar en una promoción si la compra es <100€ o el importe de descuento generado si es superior)
+
+### Solución
+
+#### Python
+
+```python
+quant = int(input("Introduce el número de cajas que quieres comprar:\n"))
+
+while quant < 5:
+    print("No se permiten compras inferiores a 5 cajas de galletas.")
+    
+    quant = int(input("Vuelve a introducir el número de cajas que quieres comprar:\n"))
+
+cookies_cost = quant * 6
+delivery_cost = 0
+if quant >= 5 and quant < 15:
+    delivery_cost = 10
+
+discount = 0
+if cookies_cost > 120 and cookies_cost < 250:
+    discount = cookies_cost * 0.05
+elif cookies_cost >= 250:
+    discount = cookies_cost * 0.1
+
+print(f"Número de cajas a comprar: {quant}")
+print(f"Importe total: {cookies_cost - discount + delivery_cost}€")
+print(f"Gastos de envío: {delivery_cost}€")
+if cookies_cost > 120:
+    print(f"Descuento aplicado: {discount}€")
+else:
+    print(f"Descuento aplicado: Faltan {120 - cookies_cost}€ para aplicar un 5% de descuento")
+```
+
+#### Java
+
+```java
+import java.util.Scanner;
+
+public class dia10 {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Introduce el número de cajas que quieres comprar:");
+        int quant = scanner.nextInt();
+
+        while (quant < 5) {
+            System.out.println("No se permiten compras inferiores a 5 cajas de galletas.");
+
+            System.out.println("Vuelve a introducir el número de cajas que quieres comprar:");
+            quant = scanner.nextInt();
+        }
+
+        double cookiesCost = quant * 6;
+        int deliveryCost = 0;
+        if (quant >= 5 && quant < 15) {
+            deliveryCost = 10;
+        }
+
+        double discount = 0;
+        if (cookiesCost > 120 && cookiesCost < 250) {
+            discount = cookiesCost * 0.05;
+        } else if (cookiesCost >= 250) {
+            discount = cookiesCost * 0.1;
+        }
+
+        System.out.println("Número de cajas a comprar: " + quant);
+        System.out.println("Importe total: " + (cookiesCost - discount + deliveryCost) + "€");
+        System.out.println("Gastos de envío: " + deliveryCost + "€");
+        if (cookiesCost > 120) {
+            System.out.println("Descuento aplicado: " + discount + "€");
+        } else
+            System.out.println("Descuento aplicado: Faltan " + (120 - cookiesCost) + "€ para aplicar un 5% de descuento");
+
+        scanner.close();
+    }
+}
+```
