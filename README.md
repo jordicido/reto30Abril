@@ -719,3 +719,60 @@ public class dia10 {
     }
 }
 ```
+
+## Reto 11 abril -   La Adivinanza de la Palabra
+
+### Enunciado
+
+El programa elige una palabra secreta (por ejemplo, "programar"). El usuario tiene 5 intentos para adivinar la palabra. En cada intento, el programa compara la palabra introducida por el usuario con la palabra secreta.
+
+- Si son iguales, muestra un mensaje de felicitación y termina.
+- Si no son iguales, indica cuántos intentos le quedan.
+- Si se agotan los intentos sin adivinar, muestra la palabra secreta y un mensaje de "¡Game Over!".
+
+### Solución
+
+#### Python
+
+```python
+import random
+
+words = ["git", "python", "debug", "test"]
+guess_word = words[random.randint(0,3)]
+
+user_word = input(f"Escoge una palabra de entre: {words} \n")
+
+if guess_word == user_word:
+    print("Enhorabuena, lo has adivinado!")
+else:
+    print("Otra vez será...")
+```
+
+#### Java
+
+```java
+import java.util.Scanner;
+
+public class dia11 {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        String[] words = { "git", "python", "debug", "test" };
+        String wordToGuess = words[(int) Math.random() * 4];
+
+        System.out.print("Escoge una palabra de entre: ");
+        for (String word : words) {
+            System.out.println(word + " ");
+        }
+
+        String userWord = scanner.next();
+
+        if (wordToGuess.equals(userWord))
+            System.out.println("Enhorabuena, lo has adivinado!");
+        else
+            System.out.println("Otra vez será...");
+
+        scanner.close();
+    }
+}
+```
