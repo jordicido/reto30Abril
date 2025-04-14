@@ -832,3 +832,84 @@ public class dia12 {
     }
 }
 ```
+
+## Reto 14 abril -   Mago del tiempo
+
+### Enunciado
+
+¿Alguna vez te has levantado con la necesidad de crear un cronómetro? Tranquilo, no eres el único. Hoy vas a poder hacer tu sueño realidad.
+
+Crea un programa que:
+
+- Pida al usuario que ingrese el número de segundos que desea contar.
+- Usa un bucle para contar desde el primer segundo hasta el número total de segundos indicado por el usuario.
+- Cada vez que el cronómetro llegue a 60 segundos, debe reiniciar los segundos a 0 y sumar 1 minuto.
+- Cuando los minutos lleguen a 60, debe reiniciar los minutos a 0 y sumar 1 hora.
+- El cronómetro debe mostrar el tiempo en formato hh:mm:ss, donde hh son las horas, mm los minutos y ss los segundos.
+
+PISTA: Para que el cronómetro se actualice cada segundo, puedes utilizar la función time.sleep(1). Esto hará que el programa espere 1 segundo entre cada iteración del bucle, imitando el comportamiento de un cronómetro real.
+
+**Ejemplo**
+
+```plaintext
+-------------------------------
+00:00:01
+00:00:02
+00:00:03
+etc.
+```
+
+### Solución
+
+#### Python
+
+```python
+import time
+
+seconds_to_reach = int(input("Introduce el número de segundos que quieres que cuente: \n"))
+seconds = 0
+
+while seconds <= seconds_to_reach:
+    hour = seconds//3600 if seconds//3600 > 9 else "0"+str(seconds//3600)
+    minute = (seconds//60)%60 if (seconds//60)%60 > 9 else "0"+str((seconds//60)%60)
+    second = seconds%60 if seconds%60 > 9 else "0"+str(seconds%60)
+    print(f"{hour}:{minute}:{second}")
+    time.sleep(1)
+    seconds += 1
+```
+
+#### Java
+
+```java
+import java.util.Scanner;
+
+public class dia13 {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Introduce el número de segundos que quieres que cuente:");
+        int secondsToReach = scanner.nextInt();
+        int seconds = 0;
+
+        while (seconds <= secondsToReach) {
+            String hour = seconds / 3600 > 9 ? String.valueOf(Math.round(seconds / 3600))
+                    : "0" + (Math.round(seconds / 3600));
+            String minute = (seconds / 60) % 60 > 9 ? String.valueOf(Math.round(seconds / 60) % 60)
+                    : "0" + (Math.round(seconds / 60) % 60);
+            String second = seconds % 60 > 9 ? String.valueOf(seconds % 60) : "0" + seconds % 60;
+            System.out.println(hour + ":" + minute + ":" + second);
+
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException e) {
+                Thread.currentThread().interrupt();
+                System.out.println("Thread was interrupted, failed to complete sleep");
+            }
+
+            seconds++;
+        }
+
+        scanner.close();
+    }
+}
+```
