@@ -783,21 +783,52 @@ public class dia11 {
 
 Pide al usuario que introduzca varios números enteros (uno por uno, y que indique "fin" para terminar). El programa debe verificar si cada número introducido es un "número de la suerte".
 
-Se considera un número de la suerte si es múltiplo de 7 (el resto de la división entre 7 es 0).
-
-Por cada número de la suerte encontrado, el programa imprimirá "¡[número] es un número de la suerte!".
-Al final, mostrará cuántos números de la suerte se encontraron en total.
+- Se considera un número de la suerte si es múltiplo de 7 (el resto de la división entre 7 es 0).
+- Por cada número de la suerte encontrado, el programa imprimirá "¡[número] es un número de la suerte!".
+- Al final, mostrará cuántos números de la suerte se encontraron en total.
 
 ### Solución
 
 #### Python
 
 ```python
+user_input = input("Introduce una serie de número, para acabar introduce 'fin'\n")
 
+while user_input != "fin":
+    try:
+        if int(user_input) % 7 == 0:
+            print(f"¡{user_input} es un número de la suerte!")
+    except ValueError:
+        print("Por favor, introduce un número válido o 'fin' para terminar.")
+    
+    user_input = input()
 ```
 
 #### Java
 
 ```java
+import java.util.Scanner;
 
+public class dia12 {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Introduce una serie de número, para acabar introduce 'fin'");
+        String userInput = scanner.next();
+
+        while (!userInput.equals("fin")) {
+            try {
+                if (Integer.parseInt(userInput) % 7 == 0) {
+                    System.out.println("¡" + userInput + " es un número de la suerte!");
+                }
+
+                userInput = scanner.next();
+            } catch (NumberFormatException e) {
+                System.out.println("Por favor, introduce un número válido o 'fin' para terminar.");
+            }
+        }
+
+        scanner.close();
+    }
+}
 ```
