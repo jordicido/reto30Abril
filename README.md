@@ -776,3 +776,28 @@ public class dia11 {
     }
 }
 ```
+
+## Reto 12 abril -   El Detector de Números de la suerte
+
+### Enunciado
+
+Pide al usuario que introduzca varios números enteros (uno por uno, y que indique "fin" para terminar). El programa debe verificar si cada número introducido es un "número de la suerte".
+
+Se considera un número de la suerte si es múltiplo de 7 (el resto de la división entre 7 es 0).
+
+Por cada número de la suerte encontrado, el programa imprimirá "¡[número] es un número de la suerte!".
+Al final, mostrará cuántos números de la suerte se encontraron en total.
+
+### Solución
+
+#### Python
+
+```python
+
+```
+
+#### Java
+
+```java
+
+```
