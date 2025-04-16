@@ -833,7 +833,7 @@ public class dia12 {
 }
 ```
 
-## Reto 14 abril -   Mago del tiempo
+## Reto 13 abril -   Mago del tiempo
 
 ### Enunciado
 
@@ -907,6 +907,137 @@ public class dia13 {
             }
 
             seconds++;
+        }
+
+        scanner.close();
+    }
+}
+```
+
+## Reto 14 abril -   Las flahscards de Federico
+
+### Enunciado
+
+Hoy en clase, a Federico le han dicho que las flashcards son un buen método de estudio. Pero Federico no tiene nada para escribir en su casa. ¿Se te ocurre alguna forma para que pueda estudiar con el método mencionado?
+
+Pues claro que sí, vas a crear un programa que:
+
+- Almacene las flashcards en una lista (pregunta, respuesta).
+- Permita al usuario añadir nuevas flashcards.
+- Muestra una pregunta aleatoria de la lista.
+- Solicite una respuesta del usuario.
+- Compare la respuesta del usuario con la correcta.
+- Indique si la respuesta es correcta o incorrecta.
+- Permita continuar practicando o salir.
+
+**Ejemplo**
+
+- Anverso: La programación es…
+- Reverso: Darle una serie de instrucciones a una máquina para que ejecute una acción específica.
+
+### Solución
+
+#### Python
+
+```python
+from random import randint
+
+list_of_flashcards = list()
+
+def option_input():
+    try:
+        option = int(input("Qué quieres hacer?\n 1- Añadir una flashcard\n 2- Practicar con una flashcard\n 3- Salir\n"))
+        if option not in [1, 2, 3]:
+            raise ValueError("Opción no válida")
+    except ValueError as e:
+        print(f"Error: {e}. Por favor, introduce un número entre 1 y 3.")
+        
+    return option
+
+option = option_input()
+
+while option != 3:
+    if option == 1:
+        question = input("Cuál es la pregunta que quieres añadir?\n")
+        answer = input("Cuál es la respuesta a esa pregunta?\n")
+        
+        list_of_flashcards.append({"pregunta":question, "respuesta":answer})
+    elif option == 2:
+        if len(list_of_flashcards) > 0:
+            question_number = randint(0,len(list_of_flashcards))-1
+            print(list_of_flashcards[question_number]["pregunta"])
+            
+            answer_from_user = input("Cuál es la respuesta?\n")
+            
+            if answer_from_user.lower() == list_of_flashcards[question_number]["respuesta"].lower():
+                print("Enhorabuena!")
+            else:
+                print("Has fallado")
+        else:
+            print("No hay preguntas guardadas")
+    
+    option = option_input()
+```
+
+#### Java
+
+```java
+import java.util.HashMap;
+import java.util.Random;
+import java.util.Scanner;
+
+public class dia14 {
+    static Scanner scanner = new Scanner(System.in);
+
+    public static int optionInput() {
+
+        int option = 0;
+
+        try {
+            System.out.println(
+                    "Qué quieres hacer?\n 1- Añadir una flashcard\n 2- Practicar con una flashcard\n 3- Salir");
+            option = scanner.nextInt();
+            scanner.nextLine();
+            if (option != 1 && option != 2 && option != 3) {
+                throw new IllegalArgumentException("Valor no válido. Por favor, introduce 1, 2 o 3.");
+            }
+        } catch (Exception e) {
+            System.out.println("Error: " + e);
+        }
+        return option;
+    }
+
+    public static void main(String[] args) {
+        int option = optionInput();
+        HashMap<String, String> listOfFlashcards = new HashMap<>();
+
+        while (option != 3) {
+            if (option == 1) {
+                System.out.println("Cuál es la pregunta que quieres añadir?");
+                String question = scanner.nextLine();
+                System.out.println("Cuál es la respuesta a esa pregunta?");
+                String answer = scanner.nextLine();
+
+                listOfFlashcards.put(question, answer);
+            } else if (option == 2) {
+                if (listOfFlashcards.size() > 0) {
+                    Random random = new Random();
+                    int questionNumber = random.nextInt(listOfFlashcards.size());
+                    String question = (String) listOfFlashcards.keySet().toArray()[questionNumber];
+                    System.out.println(question);
+                    System.out.println("Cuál es la respuesta?");
+                    String answerFromUser = scanner.nextLine();
+                    if (listOfFlashcards.get(question).equals(answerFromUser)) {
+                        System.out.println("Enhorabuena!");
+                    } else
+                        System.out.println("Has fallado");
+                } else {
+                    System.out.println("No hay preguntas guardadas");
+                }
+
+            }
+
+            option = optionInput();
         }
 
         scanner.close();
