@@ -1044,3 +1044,57 @@ public class dia14 {
     }
 }
 ```
+
+## Reto 15 abril -   ¿Password válido?
+
+### Enunciado
+
+Resulta que nos piden que programemos un validador de contraseñas. Algo fácil para los alumnos de Prometeo. Solo tenemos que decir si, una contraseña introducida por terminal es válida o no.
+
+Para que una contraseña sea válida debe:
+
+- Tener al menos 8 caracteres.
+- Tener al menos una letra minúscula.
+- Tener al menos una letra mayúscula.
+- Tener al menos un número.
+- Tener al menos un símbolo especial  de entre los siguientes *, ?, !, ^, “, $.
+- No contener la palabra GIT, en ningún formato (ni GIT, ni git, ni gIt, ni giT, ni Git, ni GIt, ni gIT, ni GiT). Odiamos Git.
+
+### Solución
+
+#### Python
+
+```python
+import re
+
+password = input("Introduce tu password:\n")
+
+pattern = re.compile(r"^(?!.*git)(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[*?!^\"$]).{8,}$")
+
+if pattern.match(password):
+    print("Password válido")
+else:
+    print("Password inválido")
+```
+
+#### Java
+
+```java
+import java.util.Scanner;
+
+public class dia15 {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Introduce tu password:");
+        String password = scanner.next();
+        String regex = "^(?!.*git)(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[*?!^\"$]).{8,}$";
+
+        if (password.matches(regex)) {
+            System.out.println("Password válido");
+        } else {
+            System.out.println("Password inválido");
+        }
+        scanner.close();
+    }
+}
+```
