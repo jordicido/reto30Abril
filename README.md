@@ -1098,3 +1098,79 @@ public class dia15 {
     }
 }
 ```
+
+## Reto 16 abril -   La Calculadora de Humor Variable
+
+### Enunciado
+
+Crea una calculadora muy especial que a veces está de buen humor y otras no. Pide al usuario que introduzca dos números y la operación (+, -, *, /).
+Si la operación es división (/) y el segundo número es 0, la calculadora se pondrá de mal humor y lanzará un error (simúlalo con un try-catch que imprima un mensaje como "¡¿Dividir por cero?! ¡¿Acaso quieres destruir el universo?!").
+Para las otras operaciones, realiza el cálculo normal y muestra el resultado con un mensaje alegre como "¡Tadá! El resultado es...".
+
+### Solución
+
+#### Python
+
+```python
+try:
+    number1 = int(input("Introduce el primer número:\n"))
+    number2 = int(input("Introduce el segundo número:\n"))
+    operation = input("Introduce el símbolo de la operación:\n")
+    if number2 == 0 and operation == "/":
+        raise ValueError("¡¿Dividir por cero?! ¡¿Acaso quieres destruir el universo?!")
+    
+    print("¡Tadá! El resultado es...")
+    if operation == "+":
+        print(number1 + number2)
+    elif operation == "-":
+        print(number1 - number2)
+    elif operation == "*":
+        print(number1 * number2)
+    elif operation == "/":
+        print(number1 / number2)
+except ValueError as e:
+    print(f"Error: {e}")
+except Exception as e:
+    print(f"Ha ocurrido un error inesperado: {e}")
+```
+
+#### Java
+
+```java
+import java.util.Scanner;
+
+public class dia16 {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        try {
+            System.out.println("Introduce el primer número:");
+            int number1 = Integer.parseInt(scanner.next());
+            System.out.println("Introduce el primer número:");
+            int number2 = Integer.parseInt(scanner.next());
+            System.out.println("Introduce el símbolo de la operación:");
+            String operation = scanner.next();
+
+            if (number2 == 0 && operation.equals("/")) {
+                throw new IllegalArgumentException("¡¿Dividir por cero?! ¡¿Acaso quieres destruir el universo?!");
+            }
+
+            System.out.println("¡Tadá! El resultado es...");
+            if (operation.equals("+")) {
+                System.out.println(number1 + number2);
+            } else if (operation.equals("-")) {
+                System.out.println(number1 - number2);
+            } else if (operation.equals("*")) {
+                System.out.println(number1 * number2);
+            } else if (operation.equals("/")) {
+                System.out.println(number1 / number2);
+            }
+        } catch (Exception e) {
+            System.out.println("Error: " + e);
+        } finally {
+            scanner.close();
+        }
+
+    }
+}
+```
